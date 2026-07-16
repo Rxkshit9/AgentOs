@@ -4,6 +4,10 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688)](https://fastapi.tiangolo.com/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.32%2B-FF4B4B)](https://streamlit.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![LangGraph](https://img.shields.io/badge/LangGraph-0.2.0-lightgrey)](https://github.com/langgraph)
+[![LangChain](https://img.shields.io/badge/LangChain-0.2.0-lightgrey)](https://github.com/langchain-ai)
+[![Docker Compose](https://img.shields.io/badge/Docker--Compose-%20-blue)](https://docs.docker.com/compose/)
+[![Memory: Postgres+pgvector](https://img.shields.io/badge/Memory-Postgres%2Fpgvector-lightgrey)](https://github.com/pgvector/pgvector)
 
 AgentOS is a local multi-agent AI platform built with FastAPI, Streamlit, LangGraph, and Ollama. It combines planning, research, memory, tool use, and verification into a single interactive workspace for building and exploring agent-driven workflows.
 
@@ -25,6 +29,27 @@ This project is designed to run a multi-agent system locally with:
 - Optional long-term memory with PostgreSQL and pgvector
 - Tool registry for search, file operations, and agent tasks
 - Local LLM support through Ollama
+
+## Dependencies
+
+Key runtime dependencies used by this project:
+
+- `langgraph` (graph-based multi-agent orchestration)
+- `langchain` (LLM tooling and agents)
+- `langchain-ollama` (Ollama integrations)
+- `psycopg[binary]`, `pgvector` (Postgres + vector store for memory)
+- `fastapi`, `uvicorn`, `streamlit`
+- `docker` / `docker-compose` (optional; used to bring up Postgres with pgvector)
+
+These packages are listed in `requirements.txt` and may be installed via:
+
+```bash
+pip install -r requirements.txt
+```
+
+Notes:
+- If you plan to use persistent memory, run the provided `docker-compose.yml` to start Postgres with pgvector.
+- Ollama is used for local model hosting; ensure your desired model is available locally.
 
 ## Project Structure
 
