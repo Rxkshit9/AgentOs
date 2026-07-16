@@ -100,22 +100,37 @@ A typical workflow looks like this:
 
 1. Open the Streamlit UI at http://127.0.0.1:8501
 2. Enter a prompt such as "Build a FastAPI service for user authentication"
-3. The planner, research, tool, and verification agents collaborate to produce a response
-4. The app can also ingest uploaded documents for RAG-style memory support
+3. The request is routed through the LangGraph workflow
+4. The planner, research, tool, and verification agents collaborate to produce a structured response
+5. The app can also ingest uploaded documents for RAG-style memory support
 
-You can add screenshots to this section by placing images in an assets/ folder and linking them here.
+### Example User Flow
+
+- Launch the frontend and backend locally
+- Enter a task in the chat interface
+- Review the agent traces and final reply
+- Use workspace mode to create or modify project files
+
+### Screenshot Placeholder
+
+You can add images to this repository under the assets/ folder and link them here later.
 
 ## Architecture
 
 ```text
-User -> Streamlit UI -> FastAPI Backend -> LangGraph Workflow
-                                  |-> Planner Agent
-                                  |-> Research Agent
-                                  |-> Retriever/Tool Agent
-                                  |-> Verification Agent
-                                  |-> Memory Layer (Postgres / fallback)
-                                  |-> Ollama LLM
+User
+  -> Streamlit UI
+  -> FastAPI Backend
+  -> LangGraph Orchestrator
+       -> Planner Agent
+       -> Research Agent
+       -> Retriever / Tool Agent
+       -> Verification Agent
+       -> Memory Layer (Postgres or in-memory fallback)
+       -> Ollama LLM
 ```
+
+This architecture allows the system to break a request into steps, gather relevant context, use tools when needed, and validate the output before returning it to the user.
 
 ## How It Works
 
