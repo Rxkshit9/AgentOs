@@ -1,12 +1,27 @@
 # AgentOS
 
+[![Python](https://img.shields.io/badge/Python-3.11%2B-blue)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688)](https://fastapi.tiangolo.com/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.32%2B-FF4B4B)](https://streamlit.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 AgentOS is a local multi-agent AI platform built with FastAPI, Streamlit, LangGraph, and Ollama. It combines planning, research, memory, tool use, and verification into a single interactive workspace for building and exploring agent-driven workflows.
+
+## Overview
+
+This project is designed to run a multi-agent system locally with:
+
+- a FastAPI backend for chat and streaming endpoints
+- a Streamlit frontend for interactive use
+- LangGraph-based orchestration for planner, research, tool, and verification agents
+- optional PostgreSQL + pgvector support for persistent memory
+- local model execution through Ollama
 
 ## Features
 
 - Multi-agent orchestration using LangGraph
 - Chat and streaming API endpoints via FastAPI
-- Streamlit-based web interface for interactive use
+- Streamlit web UI for conversations and workspace tasks
 - Optional long-term memory with PostgreSQL and pgvector
 - Tool registry for search, file operations, and agent tasks
 - Local LLM support through Ollama
@@ -24,17 +39,17 @@ AgentOS is a local multi-agent AI platform built with FastAPI, Streamlit, LangGr
 
 ## Prerequisites
 
-Before running the project, make sure you have:
+Before running the project, ensure you have:
 
 - Python 3.11+ installed
 - Ollama installed and running locally
 - An Ollama model available, such as qwen2.5-coder:7b
 - Optional: Docker Desktop if you want PostgreSQL support via docker-compose
 
-## Installation
+## Quick Start
 
 1. Clone the repository
-2. Install Python dependencies:
+2. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -52,21 +67,19 @@ ollama pull qwen2.5-coder:7b
 docker compose up -d postgres
 ```
 
-## Running the Application
-
-Start the backend:
+5. Start the backend:
 
 ```bash
 uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 
-In a second terminal, start the frontend:
+6. In a second terminal, start the frontend:
 
 ```bash
 streamlit run frontend/app.py
 ```
 
-Then open:
+7. Open the app:
 
 - Backend health check: http://127.0.0.1:8000/health
 - Streamlit UI: http://127.0.0.1:8501
@@ -83,9 +96,19 @@ You can configure the app using a .env file. Common variables include:
 
 ## Notes
 
-- The app will run in a fallback in-memory mode if PostgreSQL is not available.
-- Some features such as persistent memory and semantic retrieval work best when PostgreSQL is running.
+- The app runs in a fallback in-memory mode if PostgreSQL is not available.
+- Persistent memory and semantic retrieval work best when PostgreSQL is running.
 
 ## License
 
-This project does not currently include a license file. If you plan to publish it publicly on GitHub, add an appropriate license before release.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## GitHub Setup
+
+To publish this repository on GitHub, run:
+
+```bash
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git branch -M main
+git push -u origin main
+```
