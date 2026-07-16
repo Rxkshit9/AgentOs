@@ -94,6 +94,46 @@ You can configure the app using a .env file. Common variables include:
 - AGENTOS_BACKEND_URL
 - TAVILY_API_KEY (if using Tavily-based search)
 
+## Demo / Screenshots
+
+A typical workflow looks like this:
+
+1. Open the Streamlit UI at http://127.0.0.1:8501
+2. Enter a prompt such as "Build a FastAPI service for user authentication"
+3. The planner, research, tool, and verification agents collaborate to produce a response
+4. The app can also ingest uploaded documents for RAG-style memory support
+
+You can add screenshots to this section by placing images in an assets/ folder and linking them here.
+
+## Architecture
+
+```text
+User -> Streamlit UI -> FastAPI Backend -> LangGraph Workflow
+                                  |-> Planner Agent
+                                  |-> Research Agent
+                                  |-> Retriever/Tool Agent
+                                  |-> Verification Agent
+                                  |-> Memory Layer (Postgres / fallback)
+                                  |-> Ollama LLM
+```
+
+## How It Works
+
+The system uses a graph-based workflow where each agent is responsible for a different stage of the task:
+
+- Planner: creates a plan or structure for the request
+- Research: gathers context or external information
+- Retriever/Tool: uses available tools or knowledge sources
+- Verification: checks consistency and quality
+- Memory: stores or retrieves information across sessions
+
+### Sample Prompts
+
+- "Explain how this project is structured"
+- "Create a Python script that reads a CSV file and summarizes it"
+- "Build a simple FastAPI endpoint with authentication"
+- "Index this uploaded document and summarize its contents"
+
 ## Notes
 
 - The app runs in a fallback in-memory mode if PostgreSQL is not available.
