@@ -1,0 +1,17 @@
+fastapi>=0.110.0
+uvicorn>=0.28.0
+streamlit>=1.32.0
+langgraph>=0.2.0
+langchain>=0.2.0
+langchain-ollama>=0.1.0
+langchain-community>=0.2.0
+psycopg[binary]>=3.1.18
+asyncpg>=0.29.0
+sqlalchemy>=2.0.28
+pgvector>=0.2.5
+pydantic>=2.6.4
+pydantic-settings>=2.2.1
+pyyaml>=6.0.1
+tavily-python>=0.3.3
+pytest>=8.1.1
+pytest-asyncio>=0.23.5

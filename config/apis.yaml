@@ -1,0 +1,10 @@
+# config/apis.yaml
+search:
+  provider: tavily
+  key_env: TAVILY_API_KEY
+github:
+  provider: github
+  token_env: GITHUB_TOKEN
+mcp_server:
+  provider: custom
+  key_env: MCP_SERVER_URL
